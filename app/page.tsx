@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from './page.module.css'
 
+//test trigger
 export default function Home() {
   const [name, setName] = useState('rtseuztz')
   const [summoner, setSummoner] = useState(null)
