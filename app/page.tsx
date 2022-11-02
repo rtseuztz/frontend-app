@@ -1,13 +1,27 @@
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import styles from './page.module.css'
 
 export default function Home() {
+  const [name, setName] = useState('rtseuztz')
+  const [summoner, setSummoner] = useState(null)
+  useEffect(() => {
+    async function getSummoner() {
+      const response = await fetch(`/${process.env.SUMMONER_IP}/summoner/${name}`)
+      const summoner = await response.json()
+      console.log(summoner)
+      return summoner;
+    }
+    getSummoner();
+  })
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js 13!</a>
         </h1>
+        {summoner ? <div>Summoner is {name}</div>
+          : <div>didnt work</div>}
 
         <p className={styles.description}>
           Get started by editing{' '}
